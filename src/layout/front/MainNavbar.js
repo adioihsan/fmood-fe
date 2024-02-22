@@ -54,11 +54,13 @@ function MainNavbar() {
       .then((response) => {
         if (response.status === 200) {
           setStoreProfile(response.data);
-          setIsLoading(false);
         }
       })
       .catch((e) => {
         setStoreProfile("");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
   const openStoreForm = () => {

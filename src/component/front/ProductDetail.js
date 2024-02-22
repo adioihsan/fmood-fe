@@ -59,7 +59,6 @@ function ProductDetail() {
     axios.get("/api/get-product-detail/" + params.id).then((res) => {
       if (res.data.status === 200) {
         setProduct(res.data.product);
-        console.log(res.data.product);
         setStore(res.data.store);
         const getUserId = localStorage.getItem("auth_id");
         setCartForm({
@@ -87,7 +86,7 @@ function ProductDetail() {
         {arrImages.map((image, index) => {
           if (image !== null) {
             return (
-              <div>
+              <div key={"prod_img_" + index}>
                 <img
                   src={serverUrls.storage + "/" + image}
                   alt="p1"
